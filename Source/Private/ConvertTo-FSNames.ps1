@@ -1,8 +1,10 @@
 function ConvertTo-FSNames {
 	[CmdletBinding()]
 	param (
-		[parameter(Mandatory,
-			ValueFromPipeline)]
+		[parameter(
+            Mandatory,
+			ValueFromPipeline
+        )]
 		[hashtable]$FrontEndParams,
 
 		[string[]]$ExcludeKey,
@@ -15,15 +17,22 @@ function ConvertTo-FSNames {
 
 		[string]$DateUFormatting = '%Y-%m-%dT%TZ%Z',
 
-		[hashtable]$KeyTranslation = $APIPropertyTranslation,
+		[hashtable]$KeyTranslation = $script:APIPropertyTranslation,
 
-		[hashtable]$ValueTranslation = $APIPropertyValueTranslation
+		[hashtable]$ValueTranslation = $script:APIPropertyValueTranslation
 	)
 	begin {
 		$Body = @{}
-		'Verbose', 'Debug', 'EnableException', 'PassThru' | ForEach-Object {
-			if ($_ -notin $ExcludeKey) { $ExcludeKey += $_ }
-		}
+		@(
+			'Debug',
+			'DisablePropertyExpansion',
+			'EnableException',
+			'PassThru',
+			'Verbose'
+		) |
+			ForEach-Object {
+				if ($_ -notin $ExcludeKey) { $ExcludeKey += $_ }
+			}
 	}
 	process {
 		foreach ($Pair in $FrontEndParams.GetEnumerator()) {
@@ -45,29 +54,48 @@ function ConvertTo-FSNames {
 				$Pair.Key.ToLower()
 			}
 
-			#Add processing to preserve single object arrays
 			$Value = foreach ($KeyValue in $Pair.Value) {
 				if ($null -ne $ExtraProcessing -and $Pair.Key -in $ExtraProcessing.Keys) {
 					& $ExtraProcessing.($Pair.Key) $KeyValue
 					break
-				} elseif ($KeyValue -is [string]) {
-					if (
-						$null -ne $PreserveStringValue -and
-						($Pair.Key -in $PreserveStringValue -or $PreserveStringValue[0] -eq '*')
-					) {
-						$KeyValue
-					} elseif ($ValueTranslation.ContainsValue($KeyValue)) {
-						($ValueTranslation.GetEnumerator() | Where-Object Value -EQ $KeyValue).Key
-					} else {
-						$KeyValue.ToLower()
-					}
-				} elseif ($KeyValue -is [DateTime]) {
-					Get-Date $KeyValue -UFormat $DateUFormatting
-				} elseif ($KeyValue -is [System.Management.Automation.SwitchParameter]) {
-					$KeyValue.ToBool()
 				} else {
-					$KeyValue
+					switch ($KeyValue) {
+						{ $_ -is [string] } {
+							if (
+							$null -ne $PreserveStringValue -and
+							($Pair.Key -in $PreserveStringValue -or $PreserveStringValue[0] -eq '*')
+							) {
+								$KeyValue
+							} elseif ($ValueTranslation.ContainsValue($KeyValue)) {
+								($ValueTranslation.GetEnumerator() | Where-Object Value -EQ $KeyValue).Key
+							} else {
+								$KeyValue.ToLower()
+							}
+						}
+						{ $_ -is [DateTime] } { Get-Date $KeyValue -UFormat $DateUFormatting }
+						{ $_ -is [System.Management.Automation.SwitchParameter] } { $KeyValue.ToBool() }
+						{ $_ -is [FreshService] } { $KeyValue.ID }
+						default { $KeyValue }
+					}
 				}
+				# elseif ($KeyValue -is [string]) {
+				# 	if (
+				# 		$null -ne $PreserveStringValue -and
+				# 		($Pair.Key -in $PreserveStringValue -or $PreserveStringValue[0] -eq '*')
+				# 	) {
+				# 		$KeyValue
+				# 	} elseif ($ValueTranslation.ContainsValue($KeyValue)) {
+				# 		($ValueTranslation.GetEnumerator() | Where-Object Value -EQ $KeyValue).Key
+				# 	} else {
+				# 		$KeyValue.ToLower()
+				# 	}
+				# } elseif ($KeyValue -is [DateTime]) {
+				# 	Get-Date $KeyValue -UFormat $DateUFormatting
+				# } elseif ($KeyValue -is [System.Management.Automation.SwitchParameter]) {
+				# 	$KeyValue.ToBool()
+				# } else {
+				# 	$KeyValue
+				# }
 			}
 			if ($Pair.Value -is [array] -and $Pair.Value.Count -eq 1) {
 				$Value = @($Value)

@@ -1,7 +1,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\Larner.FreshService.psm1'
+RootModule = '.\FreshService.psm1'
 
 # Version number of this module.
 ModuleVersion = '2.2.0'
@@ -16,10 +16,10 @@ GUID = '51b9ba15-ecda-4cd5-93b4-690b463ccdc4'
 Author = 'Alexander Larner'
 
 # Company or vendor of this module
-CompanyName = ''
+# CompanyName = ''
 
 # Copyright statement for this module
-Copyright = ''
+# Copyright = ''
 
 # Description of the functionality provided by this module
 Description = 'Provides a PowerShell wrapper to the FreshService API'
@@ -159,7 +159,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = @'
+1.0.1 - 12/15/2021 - Added workaround to FreshService API ticket query bug, to pull all matching tickets instead of first 100
+1.0.2 - 01/12/2022 - Added class and functions for Agent Groups.
+						Updated New-FSTicketTask to accept Agent Group names.
+						Created Update-FSTicketTask.
+2.0.0 - 03/09/2022 - Reformatted module to put functions, classes, and main variables into their own files
+'@
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -1,6 +1,22 @@
 $TeppScriptblocks = @{
+    #Agents = { Get-FSAgent | Select-PSFObject 'ID as Text', 'Name as Tooltip' }
+    Agents = {
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+        Write-PSFMessage "Getting agent argument completers"
+        Get-FSAgent |
+            Where-Object Name -like "$wordToComplete*" |
+                ForEach-Object {
+                    [System.Management.Automation.CompletionResult]::New($_.ID, $_.Name, 'ParameterValue', $_.ToString())
+                }
+    }
     AgentGroupNames = { (Get-FSAgentGroup).Name }
     CategoryNames = { Get-FSTicketCategories }
+    ClassNames = {
+            Get-ChildItem "$env:USERPROFILE\OneDrive\Documents\FreshService\Source\Classes" -Exclude 'To Be Created' |
+                Get-ChildItem -Filter *.ps1 -Recurse |
+                    Select-Object -ExpandProperty BaseName |
+                        ForEach-Object { $_.Split(' ')[-1] }
+    }
     DepartmentNames = { (Get-FSDepartment).Name }
     ImpactNames = { Get-FSTicketImpacts }
     PriorityNames = { Get-FSTicketPriorities }
@@ -27,22 +43,49 @@ $TeppScriptblocks = @{
                     }
         } else { Get-FSTicketCategories | Get-FSTicketSubCategories }
     }
-    TaskStatusNames = { 
+    TaskStatusNames = {
         $Module = Get-Module FreshService
         & $Module { $script:TicketTaskStatuses.Keys }
     }
-    TicketFieldsWithChoices = { (Get-FSAllTicketFields | Where-Object Choices -NE $null).Label }
+    Tickets = {
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+        Write-PSFMessage "Getting ticket argument completers"
+        $Agent = Get-FSAgent -Email "$env:USERNAME@$env:USERDNSDOMAIN"
+
+        if ($Agent) {
+            Get-FSTicketFromQuery -Query "agent_id:$($Agent.ID)" -ExcludeClosedResolvedTickets |
+                Where-Object Subject -like "$wordToComplete*" |
+                    ForEach-Object {
+                        [System.Management.Automation.CompletionResult]::New($_.ID, $_.Subject, 'ParameterValue', $_.ToString())
+                    }
+        }
+    }
+    TicketFieldsWithChoices = { (Get-FSAllTicketFields | Where-Object Choices).Label }
     TicketTypeNames = { Get-FSTicketTypes }
     TicketTypeNamesAlt = { @(Get-FSTicketTypes) + 'Alert' }
     UrgencyNames = { Get-FSTicketUrgencies }
 }
 
+$CacheIntervals = {
+    Agents = '1h'
+}
 
-$TeppScriptblocks.GetEnumerator() | ForEach-Object {
-    Register-PSFTeppScriptblock -Name "FreshService.$($_.Key)" -ScriptBlock $_.Value -Global
-    <#
-    The Global flag enables the PsfValidateSet TabCompletion named scriptblock to work properly.
-    The documentation for that parameter says:
-    This parameter is needed to reliably execute in background runspaces, but means no direct access to module content.
-    #>
+
+foreach ($TeppBlock in $TeppScriptblocks.GetEnumerator()) {
+    $Splat = @{
+        Name        = "FreshService.$($_.Key)"
+        ScriptBlock = $TeppBlock.Value
+        Global      = $true
+        <#
+        The Global flag enables the PsfValidateSet TabCompletion named scriptblock to work properly.
+        The documentation for that parameter says:
+        This parameter is needed to reliably execute in background runspaces, but means no direct access to module content.
+        #>
+    }
+
+    if ($CacheIntervals.ContainsKey($TeppBlock.Key)) {
+        $Splat.CacheDuration = $CacheIntervals.($TeppBlock.Key)
+    }
+
+    Register-PSFTeppScriptblock @Splat
 }
