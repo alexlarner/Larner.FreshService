@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://api.freshservice.com/#view_all_ticket
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# Get-FSRequester
 
 ## SYNOPSIS
 
@@ -13,10 +13,24 @@ schema: 2.0.0
 
 ## SYNTAX
 
+### All (Default)
+
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-FSRequester [-PassThru] [-EnableException] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ID
+
+```text
+Get-FSRequester -ID <Int64[]> [-PassThru] [-EnableException] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
+```
+
+### Filtered
+
+```text
+Get-FSRequester [-Email <String[]>] [-MobilePhoneNumber <String>] [-WorkPhoneNumber <String>] [-PassThru]
+ [-EnableException] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,49 +49,33 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -Email
 
-{{ Fill AgentId Description }}
+{{ Fill Email Description }}
 
 ```yaml
-Type: Int64
-Parameter Sets: (All)
+Type: String[]
+Parameter Sets: Filtered
 Aliases:
 
-Required: True
-Position: 7
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -Billable
+### -EnableException
 
-{{ Fill Billable Description }}
+Replaces user friendly yellow warnings with bloody red exceptions of doom! Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExecutedAt
-
-{{ Fill ExecutedAt Description }}
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -88,78 +86,62 @@ Accept wildcard characters: False
 {{ Fill ID Description }}
 
 ```yaml
-Type: Int64
-Parameter Sets: (All)
+Type: Int64[]
+Parameter Sets: ID
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -Note
+### -MobilePhoneNumber
 
-{{ Fill Note Description }}
+{{ Fill MobilePhoneNumber Description }}
 
 ```yaml
 Type: String
+Parameter Sets: Filtered
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+
+{{ Fill PassThru Description }}
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TaskId
+### -WorkPhoneNumber
 
-{{ Fill TaskId Description }}
+{{ Fill WorkPhoneNumber Description }}
 
 ```yaml
-Type: Int64
-Parameter Sets: (All)
+Type: String
+Parameter Sets: Filtered
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeSpent
-
-{{ Fill TimeSpent Description }}
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimerRunning
-
-{{ Fill TimerRunning Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -169,7 +151,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### System.Int64[]
+
+### System.String[]
+
+### System.String
 
 ## OUTPUTS
 

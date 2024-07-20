@@ -5,7 +5,7 @@ online version: https://api.freshservice.com/#create_service_request
 schema: 2.0.0
 ---
 
-# New-FSTicketTask
+# New-FSUserCreationRequest
 
 ## SYNOPSIS
 
@@ -13,28 +13,11 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### No Group (Default)
-
 ```text
-New-FSTicketTask -ID <Int64> [-Status <String>] [-DueDate <DateTime>] [-NotifyBefore <Int32>] -Title <String[]>
- [-Description <String>] [-EnableException] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ID
-
-```text
-New-FSTicketTask -ID <Int64> [-Status <String>] [-DueDate <DateTime>] [-NotifyBefore <Int32>] -Title <String[]>
- [-Description <String>] [-GroupID <Int64>] [-EnableException] [-PassThru] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Name
-
-```text
-New-FSTicketTask -ID <Int64> [-Status <String>] [-DueDate <DateTime>] [-NotifyBefore <Int32>] -Title <String[]>
- [-Description <String>] [-Group <String>] [-EnableException] [-PassThru] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-FSUserCreationRequest [-FirstName] <String> [-LastName] <String> [-EmployeeID] <String>
+ [[-OUCanonicalName] <String>] [-ManagerEmail] <String> [[-RequestedForEmail] <String>]
+ [[-TaskTitles] <String[]>] [-IncludePasswordResetTask] [-EnableException] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,35 +52,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
+### -EmployeeID
 
-{{ Fill Description Description }}
+{{ Fill EmployeeID Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DueDate
-
-{{ Fill DueDate Description }}
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -117,66 +84,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Group
+### -FirstName
 
-{{ Fill Group Description }}
+{{ Fill FirstName Description }}
 
 ```yaml
 Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupID
-
-{{ Fill GroupID Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: ID
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ID
-
-{{ Fill ID Description }}
-
-```yaml
-Type: Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IncludePasswordResetTask
+
+{{ Fill IncludePasswordResetTask Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NotifyBefore
+### -LastName
 
-{{ Fill NotifyBefore Description }}
+{{ Fill LastName Description }}
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: 0, 900, 1800, 2700, 3600, 7200
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagerEmail
+
+{{ Fill ManagerEmail Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OUCanonicalName
+
+{{ Fill OUCanonicalName Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -198,9 +180,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status
+### -RequestedForEmail
 
-{{ Fill Status Description }}
+{{ Fill RequestedForEmail Description }}
 
 ```yaml
 Type: String
@@ -208,25 +190,25 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Title
+### -TaskTitles
 
-{{ Fill Title Description }}
+{{ Fill TaskTitles Description }}
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 6
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -253,7 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String[]
+### System.String
 
 ## OUTPUTS
 

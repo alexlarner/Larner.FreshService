@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://api.freshservice.com/#delete_a_ticket_attachment
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# Update-FSDepartment
 
 ## SYNOPSIS
 
@@ -14,9 +14,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-FSDepartment [[-ID] <Int64>] [-Name] <String[]> [[-Description] <String>] [[-HeadUserID] <Int64>]
+ [[-PrimeUserID] <Int64>] [[-Domains] <String[]>] [[-CustomFields] <Hashtable>] [[-CreatedAt] <DateTime>]
+ [[-UpdatedAt] <DateTime>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,28 +35,44 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -CreatedAt
 
-{{ Fill AgentId Description }}
+{{ Fill CreatedAt Description }}
 
 ```yaml
-Type: Int64
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Billable
+### -CustomFields
 
-{{ Fill Billable Description }}
+{{ Fill CustomFields Description }}
 
 ```yaml
-Type: Boolean
+Type: Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+
+{{ Fill Description Description }}
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,17 +83,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExecutedAt
+### -Domains
 
-{{ Fill ExecutedAt Description }}
+{{ Fill Domains Description }}
 
 ```yaml
-Type: DateTime
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HeadUserID
+
+{{ Fill HeadUserID Description }}
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,32 +124,32 @@ Type: Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Note
-
-{{ Fill Note Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
 Required: False
-Position: 6
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TaskId
+### -Name
 
-{{ Fill TaskId Description }}
+{{ Fill Name Description }}
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -PrimeUserID
+
+{{ Fill PrimeUserID Description }}
 
 ```yaml
 Type: Int64
@@ -125,39 +157,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeSpent
+### -UpdatedAt
 
-{{ Fill TimeSpent Description }}
+{{ Fill UpdatedAt Description }}
 
 ```yaml
-Type: TimeSpan
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimerRunning
-
-{{ Fill TimerRunning Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### System.String[]
 
 ## OUTPUTS
 

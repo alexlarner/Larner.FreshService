@@ -20,16 +20,16 @@ Select-UniquePropertyValuePairs [-NewObject] <PSObject> [-ExistingObjects] <PSOb
 
 ## DESCRIPTION
 
-Get all the note property names from the new & existing objects except the property specified in the preserve property value
- Foreach property in the new object
- 	If the property exists on the existing objects
- 		Get the existing objects that have the property
- 		If the new object property value is not in the existing object property values
- 			Add the property name and new object property value to a hashtable of unique property value pairs
- 	Else add the property name and new object property value to a hashtable of unique property value pairs
- If there's anything in the unique property value pairs hashtable
- 	Add the preserve property and the new object's property value to the unique property value pairs hashtable
- 	Output the unique property value pairs hashtable as a PSCustomObject
+- Get all the note property names from the new & existing objects except the property specified in the preserve property value
+	- Foreach property in the new object
+		- If the property exists on the existing objects
+			- Get the existing objects that have the property
+			- If the new object property value is not in the existing object property values
+				- Add the property name and new object property value to a hashtable of unique property value pairs
+		- Else add the property name and new object property value to a hashtable of unique property value pairs
+- If there's anything in the unique property value pairs hashtable
+	- Add the preserve property and the new object's property value to the unique property value pairs hashtable
+ 	- Output the unique property value pairs hashtable as a PSCustomObject
 
 ## EXAMPLES
 
@@ -39,14 +39,19 @@ Get all the note property names from the new & existing objects except the prope
 $New
 ```
 
+```text
 Name : Bob
 a    : 1
 b    : 2
 c    : 3
 d    : 4
+```
 
-PS C:\\\> $Existing | fl
+```PowerShell
+$Existing | fl
+```
 
+```text
 Name : Bob
 a    : 1
 
@@ -56,12 +61,17 @@ b    : 22
 Name : Bob
 c    : 3
 e    : 55
+```
 
-PS C:\\\> Select-UniquePropertyValuePairs -NewObject $New -ExistingObjects $Existing -PreserveProperty Name
+```PowerShell
+Select-UniquePropertyValuePairs -NewObject $New -ExistingObjects $Existing -PreserveProperty Name
+```
 
+```text
 b d Name
 - - ----
 2 4 Bob
+```
 
 ### Example 2
 
@@ -105,8 +115,7 @@ Accept wildcard characters: False
 
 ### -PreserveProperty
 
-The property to not filter out and to preserve the new object's value of.
-Generally, the foreign key property that links the two objects together.
+The property to not filter out and to preserve the new object's value of. Generally, the foreign key property that links the two objects together.
 
 ```yaml
 Type: String
@@ -115,22 +124,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

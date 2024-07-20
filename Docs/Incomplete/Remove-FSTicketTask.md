@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://api.freshservice.com/#delete_a_ticket_attachment
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# Remove-FSTicketTask
 
 ## SYNOPSIS
 
@@ -14,9 +14,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Remove-FSTicketTask [-ID] <Int64> [-TicketID] <Int64> [-EnableException] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,49 +34,33 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -Confirm
 
-{{ Fill AgentId Description }}
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Int64
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 7
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Billable
+### -EnableException
 
-{{ Fill Billable Description }}
+Replaces user friendly yellow warnings with bloody red exceptions of doom! Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExecutedAt
-
-{{ Fill ExecutedAt Description }}
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,65 +82,34 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -Note
+### -TicketID
 
-{{ Fill Note Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TaskId
-
-{{ Fill TaskId Description }}
+{{ Fill TicketID Description }}
 
 ```yaml
 Type: Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeSpent
-
-{{ Fill TimeSpent Description }}
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimerRunning
-
-{{ Fill TimerRunning Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

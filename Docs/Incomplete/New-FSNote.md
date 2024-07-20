@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://api.freshservice.com/#create_child_ticket
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# New-FSNote
 
 ## SYNOPSIS
 
@@ -14,9 +14,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-FSNote [-ID] <Int64> [-Body] <String> [-Incoming] [[-NotifyEmails] <String[]>] [-Private]
+ [[-UserID] <Int64>] [-EnableException] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,49 +35,49 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -Body
 
-{{ Fill AgentId Description }}
+{{ Fill Body Description }}
 
 ```yaml
-Type: Int64
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Billable
+### -Confirm
 
-{{ Fill Billable Description }}
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExecutedAt
+### -EnableException
 
-{{ Fill ExecutedAt Description }}
+Replaces user friendly yellow warnings with bloody red exceptions of doom! Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: DateTime
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -90,55 +90,87 @@ Accept wildcard characters: False
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
+Aliases: TicketID
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Note
+### -Incoming
 
-{{ Fill Note Description }}
+{{ Fill Incoming Description }}
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TaskId
+### -NotifyEmails
 
-{{ Fill TaskId Description }}
+{{ Fill NotifyEmails Description }}
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+
+{{ Fill PassThru Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Private
+
+{{ Fill Private Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserID
+
+{{ Fill UserID Description }}
 
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeSpent
-
-{{ Fill TimeSpent Description }}
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases:
+Aliases: AgentID
 
 Required: False
 Position: 3
@@ -147,17 +179,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimerRunning
+### -WhatIf
 
-{{ Fill TimerRunning Description }}
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: wi
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### None
 
 ## OUTPUTS
 

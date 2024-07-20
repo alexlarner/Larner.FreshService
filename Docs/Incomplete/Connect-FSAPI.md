@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version:
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# Connect-FSAPI
 
 ## SYNOPSIS
 
@@ -14,9 +14,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Connect-FSAPI [[-APIKey] <SecureString>] [[-FreshServiceURL] <Uri>] [-SaveCredentials] [-EnableException]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,129 +34,98 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -APIKey
 
-{{ Fill AgentId Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Billable
-
-{{ Fill Billable Description }}
+{{ Fill APIKey Description }}
 
 ```yaml
-Type: Boolean
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExecutedAt
-
-{{ Fill ExecutedAt Description }}
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ID
-
-{{ Fill ID Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Note
+### -Confirm
 
-{{ Fill Note Description }}
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TaskId
+### -EnableException
 
-{{ Fill TaskId Description }}
+Replaces user friendly yellow warnings with bloody red exceptions of doom! Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: Int64
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeSpent
+### -FreshServiceURL
 
-{{ Fill TimeSpent Description }}
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimerRunning
-
-{{ Fill TimerRunning Description }}
+{{ Fill FreshServiceURL Description }}
 
 ```yaml
-Type: Boolean
+Type: Uri
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SaveCredentials
+
+{{ Fill SaveCredentials Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### None
 
 ## OUTPUTS
 

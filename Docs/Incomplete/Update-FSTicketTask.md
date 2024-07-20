@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://api.freshservice.com/#delete_a_ticket_attachment
 schema: 2.0.0
 ---
 
-# New-FSTicketTask
+# Update-FSTicketTask
 
 ## SYNOPSIS
 
@@ -13,28 +13,28 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### No Group (Default)
+### NoGroup (Default)
 
 ```text
-New-FSTicketTask -ID <Int64> [-Status <String>] [-DueDate <DateTime>] [-NotifyBefore <Int32>] -Title <String[]>
- [-Description <String>] [-EnableException] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-FSTicketTask -ID <Int64> -TicketID <Int64> [-Status <String>] [-DueDate <DateTime>]
+ [-NotifyBefore <Int32>] [-Title <String>] [-Description <String>] [-PassThru] [-EnableException]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ID
 
 ```text
-New-FSTicketTask -ID <Int64> [-Status <String>] [-DueDate <DateTime>] [-NotifyBefore <Int32>] -Title <String[]>
- [-Description <String>] [-GroupID <Int64>] [-EnableException] [-PassThru] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-FSTicketTask -ID <Int64> -TicketID <Int64> [-Status <String>] [-DueDate <DateTime>]
+ [-NotifyBefore <Int32>] [-Title <String>] [-Description <String>] -GroupID <Int64> [-PassThru]
+ [-EnableException] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Name
 
 ```text
-New-FSTicketTask -ID <Int64> [-Status <String>] [-DueDate <DateTime>] [-NotifyBefore <Int32>] -Title <String[]>
- [-Description <String>] [-Group <String>] [-EnableException] [-PassThru] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-FSTicketTask -ID <Int64> -TicketID <Int64> [-Status <String>] [-DueDate <DateTime>]
+ [-NotifyBefore <Int32>] [-Title <String>] [-Description <String>] -Group <String> [-PassThru]
+ [-EnableException] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +126,7 @@ Type: String
 Parameter Sets: Name
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -142,7 +142,7 @@ Type: Int64
 Parameter Sets: ID
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -214,19 +214,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Title
+### -TicketID
 
-{{ Fill Title Description }}
+{{ Fill TicketID Description }}
 
 ```yaml
-Type: String[]
+Type: Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Title
+
+{{ Fill Title Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -253,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String[]
+### None
 
 ## OUTPUTS
 

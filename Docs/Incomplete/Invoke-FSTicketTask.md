@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# Invoke-FSTicketTask
 
 ## SYNOPSIS
 
@@ -14,9 +14,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Invoke-FSTicketTask [-Action] <String> [[-Target] <PSObject>] [-ScriptBlock] <ScriptBlock>
+ [-ServiceRequestID] <Int64> [-TaskID] <Int64> [[-FSUserID] <Int64>] [[-Status] <String>] [-EnableException]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,89 +35,57 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -Action
 
-{{ Fill AgentId Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Billable
-
-{{ Fill Billable Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExecutedAt
-
-{{ Fill ExecutedAt Description }}
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ID
-
-{{ Fill ID Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Note
-
-{{ Fill Note Description }}
+{{ Fill Action Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 6
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TaskId
+### -Confirm
 
-{{ Fill TaskId Description }}
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableException
+
+Replaces user friendly yellow warnings with bloody red exceptions of doom! Use this if you want the function to throw terminating errors you want to catch.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FSUserID
+
+{{ Fill FSUserID Description }}
 
 ```yaml
 Type: Int64
@@ -131,33 +99,98 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeSpent
+### -ScriptBlock
 
-{{ Fill TimeSpent Description }}
+{{ Fill ScriptBlock Description }}
 
 ```yaml
-Type: TimeSpan
+Type: ScriptBlock
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceRequestID
+
+{{ Fill ServiceRequestID Description }}
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimerRunning
+### -Status
 
-{{ Fill TimerRunning Description }}
+{{ Fill Status Description }}
 
 ```yaml
-Type: Boolean
+Type: String
+Parameter Sets: (All)
+Aliases: TicketStatusOnFail
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Target
+
+{{ Fill Target Description }}
+
+```yaml
+Type: PSObject
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TaskID
+
+{{ Fill TaskID Description }}
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### None
 
 ## OUTPUTS
 

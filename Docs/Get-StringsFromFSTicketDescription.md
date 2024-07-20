@@ -20,22 +20,27 @@ Get-StringsFromFSTicketDescription [-Text] <String[]> [-Regex] <Regex> [[-Delimi
 
 ## DESCRIPTION
 
-Finds a string inside a string using Regex and splits it if a delimiter is given.
-Writes a warning and a log message if no regex matches are found in the given text.
+Finds a string inside a string using Regex and splits it if a delimiter is given. Writes a warning and a log message if no regex matches are found in the given text.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Parse out a single string
 
 ```PowerShell
 Get-ObjectsFromJsonInText -Text 'Failed to disable the AD Account of alarner' -Text 'Failed to disable the AD Account of (.+)$'
+```
+
+```text
 alarner
 ```
 
-### Example 2
+### Example 2: Split the string after regex parsing
 
 ```PowerShell
 Get-ObjectsFromJsonInText -Text 'Failed to disable the AD Account of alarner, alarner-test' -Text 'Failed to disable the AD Account of (.+)$' -Delimiter ', '
+```
+
+```text
 alarner
 alarner-test
 ```
@@ -60,8 +65,7 @@ Accept wildcard characters: False
 
 ### -Regex
 
-The regex to parse the strings with.
-There must only be two capture groups.
+The regex to parse the strings with. There must only be two capture groups.
 
 ```yaml
 Type: Regex
@@ -91,33 +95,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### String, Regex
+### String
+
+The text to parse
 
 ## OUTPUTS
 
-### System.String
+### String
+
+The parsed text 
 
 ## NOTES
 

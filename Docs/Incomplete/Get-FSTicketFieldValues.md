@@ -5,67 +5,63 @@ online version: https://api.freshservice.com/#get_ticket_activities
 schema: 2.0.0
 ---
 
-# Get-ObjectsFromJsonInText
+# Get-FSTicketFieldValues
 
 ## SYNOPSIS
 
-Parses out PSCustomObjects from a JSON in a string
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```text
-Get-ObjectsFromJsonInText [-Text] <String[]> [[-Regex] <Regex>] [-ProgressAction <ActionPreference>]
+Get-FSTicketFieldValues [[-Field] <String[]>] [-EnableException] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Finds a JSON inside a string using Regex and converts it into PSCustomObjects. Writes a warning and a log message if no regex matches are found in the given text.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-```PowerShell
-Get-ObjectsFromJsonInText -Text '<p>Raw JSON Data: {"EmployeeID":123456,"ADUsers":"ALarner, ALarnerAdmin"}</p><p>Extra stuff here</p>'
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-```text
-EmployeeID ADUsers
----------- -------
-    123456 ALarner, ALarnerAdmin
-```
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Text
+### -EnableException
 
-The text to parse the JSON objects from
+Replaces user friendly yellow warnings with bloody red exceptions of doom! Use this if you want the function to throw terminating errors you want to catch.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Field
+
+{{ Fill Field Description }}
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Regex
-
-The regex to parse out the JSON from the text. There must only be two capture groups.
-
-```yaml
-Type: Regex
-Parameter Sets: (All)
-Aliases:
-
 Required: False
-Position: 2
-Default value: Raw JSON Data: ([\{|\[].+[\}|\]])
+Position: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,11 +72,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-
-The text to parse
+### None
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

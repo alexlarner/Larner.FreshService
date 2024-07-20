@@ -1,11 +1,11 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://api.freshservice.com/#view_an_agent
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# Get-FSAllAssets
 
 ## SYNOPSIS
 
@@ -14,8 +14,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
+Get-FSAllAssets [[-OrderBy] <String>] [[-OrderType] <String>] [[-Include] <String>] [[-Trashed] <Boolean>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -35,30 +34,15 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -Include
 
-{{ Fill AgentId Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Billable
-
-{{ Fill Billable Description }}
+{{ Fill Include Description }}
 
 ```yaml
-Type: Boolean
+Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Type Fields
 
 Required: False
 Position: 2
@@ -67,89 +51,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExecutedAt
+### -OrderBy
 
-{{ Fill ExecutedAt Description }}
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ID
-
-{{ Fill ID Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Note
-
-{{ Fill Note Description }}
+{{ Fill OrderBy Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: ID, Created At, Updated At
 
 Required: False
-Position: 6
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TaskId
+### -OrderType
 
-{{ Fill TaskId Description }}
+{{ Fill OrderType Description }}
 
 ```yaml
-Type: Int64
+Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Ascending, Descending
 
 Required: False
-Position: 5
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeSpent
+### -Trashed
 
-{{ Fill TimeSpent Description }}
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimerRunning
-
-{{ Fill TimerRunning Description }}
+{{ Fill Trashed Description }}
 
 ```yaml
 Type: Boolean
@@ -157,7 +95,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### None
 
 ## OUTPUTS
 

@@ -1,22 +1,20 @@
 ---
 external help file: Larner.FreshService-help.xml
 Module Name: Larner.FreshService
-online version: https://api.freshservice.com/#create_service_request
+online version: https://api.freshservice.com/#view_all_ticket
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# Get-FSAllTickets
 
 ## SYNOPSIS
-
-{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-FSAllTickets [[-Filter] <String>] [[-RequesterID] <Int64>] [[-Email] <String>] [[-UpdatedSince] <DateTime>]
+ [[-Type] <String>] [[-OrderType] <String>] [[-Include] <String[]>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,49 +25,64 @@ New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>
 
 ### Example 1
 
-```powershell
-PS C:\> {{ Add example code here }}
+```PowerShell
+Get-FSALlTickets
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -Filter
 
-{{ Fill AgentId Description }}
+The filters available are new_and_my_open, watching, spam, deleted.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequesterID
+
+{{ Fill RequesterID Description }}
 
 ```yaml
 Type: Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 7
-Default value: None
+Required: False
+Position: 2
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Billable
+### -Email
 
-{{ Fill Billable Description }}
+{{ Fill Email Description }}
 
 ```yaml
-Type: Boolean
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExecutedAt
+### -UpdatedSince
 
-{{ Fill ExecutedAt Description }}
+By default only tickets that have been created within the past 30 days will be returned.
+For older tickets, use this filter.
 
 ```yaml
 Type: DateTime
@@ -83,44 +96,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ID
+### -Type
 
-{{ Fill ID Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Note
-
-{{ Fill Note Description }}
+For Incidents: /api/v2/tickets?type=Incident
+For Service Requests: /api/v2/tickets?type=Service+Request
+The API response mentions an alert option
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TaskId
-
-{{ Fill TaskId Description }}
-
-```yaml
-Type: Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -131,33 +114,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeSpent
+### -OrderType
 
-{{ Fill TimeSpent Description }}
+Default sort order type is Descending
 
 ```yaml
-Type: TimeSpan
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: None
+Position: 6
+Default value: Descending
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimerRunning
+### -Include
 
-{{ Fill TimerRunning Description }}
+Stats: Will return the tickets closed_at, resolved_at and first_responded_at time.
+Requester: Will return the requester's email, id, mobile, name, and phone.
+Requested_For: Will return details of the user on behalf of whom the request has been raised
+Tags and department are not listed in the documentation, but are listed in the error response if you use an invalid value for this.
 
 ```yaml
-Type: Boolean
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,12 +155,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### String, Long, DateTime
 
 ## OUTPUTS
-
-### System.Object
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://api.freshservice.com/#view_all_ticket](https://api.freshservice.com/#view_all_ticket)
+

@@ -48,19 +48,19 @@ Get-FSServiceItem -SearchTerm <String[]> [-UserEmail <String>] [-ProgressAction 
 
 Get a service item that matches a display ID, search term, or service category, or get all service items.
 
-Returns all the details of a service item/s, i.e.
-Name, Display ID, required fields, etc.
+Returns all the details of a service item/s, i.e. Name, Display ID, required fields, etc.
 
-Use to get the display ID of an item to create a new service request (using New-FSServiceRequest) or to see all the available service items
+Use to get the display ID of an item to create a new service request (using [New-FSServiceRequest](Docs/New-FSServiceRequest.md)) or to see all the available service items.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get service item by the service catergory name
 
 ```PowerShell
 Get-FSServiceItem -ServiceCategoryName 'Hardware Provisioning'
 ```
 
+```text
 id                       : 18000578715
 created_at               : 4/22/2021 4:43:42 PM
 updated_at               : 4/22/2021 4:43:42 PM
@@ -85,13 +85,15 @@ allow_quantity           : False
 is_bundle                : False
 create_child             : False
 configs                  : @{attachment_mandatory=False; subject=Request for {{requested_for}} : {{item.name}}}
+```
 
-### Example 2
+### Example 2: Get service item by the service catergory ID
 
 ```PowerShell
 Get-FSServiceItem -ServiceCategoryID 18000162285
 ```
 
+```text
 id                       : 18000764406
 created_at               : 2/7/2022 3:29:50 PM
 updated_at               : 2/7/2022 3:32:35 PM
@@ -116,13 +118,13 @@ allow_quantity           : False
 is_bundle                : False
 create_child             : False
 configs                  : @{attachment_mandatory=False; subject=Request for {{requested_for}} : {{item.name}}}
+```
 
 ## PARAMETERS
 
 ### -ServiceCategoryName
 
-Name of the category that you want all the service items from.
-You can get them all from Get-FSAllServiceCategories.
+Name of the category that you want all the service items from. You can get them all from `Get-FSAllServiceCategories`.
 
 ```yaml
 Type: String[]
@@ -186,29 +188,12 @@ Accept wildcard characters: False
 
 ### -UserEmail
 
-By default, the API will search the articles for the user whose API key is provided.
-If you want to search articles for a different user, please provide their user_email.
+By default, the API will search the articles for the user whose API key is provided. If you want to search articles for a different user, please provide their `user_email`.
 
 ```yaml
 Type: String
 Parameter Sets: Search
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -223,21 +208,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String, Int
+### String
+
+### Int
 
 ## OUTPUTS
 
 ## NOTES
 
-The All and Filter* parameter sets do not include these properties on the returned object:
-	child_items
-	cost
-	custom_fields
-	description
-	icon_url
-	short_description
+The `All` and `Filter*` parameter sets do not include these properties on the returned object:
+	
+- child_items
+- cost
+- custom_fields
+- description
+- icon_url
+- short_description
 
-All the other property sets ('Display ID' and 'Search'), do include those properties in the returned object
+All the other property sets (`Display ID` and `Search`), do include those properties in the returned object
 
 ## RELATED LINKS
 

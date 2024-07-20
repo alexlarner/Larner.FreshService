@@ -29,9 +29,9 @@ Remove-ReportedIssues -Strings <String[]> -Regex <Regex> [-Delimiter <String>] -
 
 ## DESCRIPTION
 
-Get all the open tickets for the given tag
-Get the objects in those tickets (using Get-ObjectsFromJsonInText)
-Filters out the property value pairs that already exist in the objects in the open tickets (using Select-UniquePropertyValuePairs)
+- Get all the open tickets for the given tag
+- Get the objects in those tickets (using [Get-ObjectsFromJsonInText](Docs/Get-ObjectsFromJsonInText.md))
+- Filters out the property value pairs that already exist in the objects in the open tickets (using [Select-UniquePropertyValuePairs](/home/keymaster/Documents/Repos/Larner.FreshService/Docs/Select-UniquePropertyValuePairs.md))
 
 ## EXAMPLES
 
@@ -61,8 +61,7 @@ Accept wildcard characters: False
 
 ### -Regex
 
-The regex to parse the strings with.
-There must only be two capture groups.
+The regex to parse the strings with. There must only be two capture groups.
 
 ```yaml
 Type: Regex
@@ -127,7 +126,8 @@ Accept wildcard characters: False
 ### -MatchOnForeignKeyOnly
 
 If you want the matching of the new issues to only match on the foreign key and not all of the object's properties.
-If this is not used, but the Objects parameter set is used, the objects for any new tickets will only have the foreign key property and any properties that have changed for that object since it was last reported.
+
+If this is not used, but the `Objects` parameter set is used, the objects for any new tickets will only have the foreign key property and any properties that have changed for that object since it was last reported.
 
 ```yaml
 Type: SwitchParameter
@@ -157,29 +157,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### String, Regex, PSCustomObject
+### None
 
 ## OUTPUTS
 

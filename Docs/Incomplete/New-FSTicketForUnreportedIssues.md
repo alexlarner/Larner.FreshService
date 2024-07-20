@@ -5,7 +5,7 @@ online version: https://api.freshservice.com/#create_service_request
 schema: 2.0.0
 ---
 
-# New-FSTimeEntry
+# New-FSTicketForUnreportedIssues
 
 ## SYNOPSIS
 
@@ -14,9 +14,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```text
-New-FSTimeEntry [-ID] <Int64> [[-TimerRunning] <Boolean>] [[-Billable] <Boolean>] [[-TimeSpent] <TimeSpan>]
- [[-ExecutedAt] <DateTime>] [[-TaskId] <Int64>] [[-Note] <String>] [-AgentId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-FSTicketForUnreportedIssues [-Object] <PSObject[]> [-ObjectDescription] <String> [-ForeignKey] <String>
+ [-TicketSplat] <Hashtable> [-TagForTicketFilter] <String> [-TagForNewTicket] <String> [-MatchOnForeignKeyOnly]
+ [[-PropertyToSortOn] <String[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,76 +35,76 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AgentId
+### -ForeignKey
 
-{{ Fill AgentId Description }}
+{{ Fill ForeignKey Description }}
 
 ```yaml
-Type: Int64
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Billable
-
-{{ Fill Billable Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExecutedAt
+### -MatchOnForeignKeyOnly
 
-{{ Fill ExecutedAt Description }}
+{{ Fill MatchOnForeignKeyOnly Description }}
 
 ```yaml
-Type: DateTime
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ID
+### -Object
 
-{{ Fill ID Description }}
+{{ Fill Object Description }}
 
 ```yaml
-Type: Int64
+Type: PSObject[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Note
+### -ObjectDescription
 
-{{ Fill Note Description }}
+{{ Fill ObjectDescription Description }}
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropertyToSortOn
+
+{{ Fill PropertyToSortOn Description }}
+
+```yaml
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -115,49 +115,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TaskId
+### -TagForNewTicket
 
-{{ Fill TaskId Description }}
+{{ Fill TagForNewTicket Description }}
 
 ```yaml
-Type: Int64
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeSpent
+### -TagForTicketFilter
 
-{{ Fill TimeSpent Description }}
+{{ Fill TagForTicketFilter Description }}
 
 ```yaml
-Type: TimeSpan
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 3
+Required: True
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimerRunning
+### -TicketSplat
 
-{{ Fill TimerRunning Description }}
+{{ Fill TicketSplat Description }}
 
 ```yaml
-Type: Boolean
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 1
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
+### None
 
 ## OUTPUTS
 
