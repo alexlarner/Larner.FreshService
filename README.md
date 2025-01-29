@@ -15,4 +15,4 @@ The aforementioned tickets included tasks for each part of the process so we’d
 
 ## Branch Differences
 
-The DEV branch was in the process of being converted to use classes to allow for implicit type conversion (i.e. specify ID or Email for a parameter value instead of the full [Agent](/Source/Classes/01 Agent.ps1) object) and to set consistent custom ToString methods for better logging.
+The DEV branch was in the process of being converted to use classes to allow for implicit type conversion (i.e. specify ID or Email for a parameter value instead of the full [Agent](/Source/Classes/01%20Agent.ps1) object) and to set consistent custom ToString methods for better logging.
