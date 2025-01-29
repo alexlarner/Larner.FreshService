@@ -1,6 +1,6 @@
 # Larner.FreshService
 
-Creates a PowerShell API around the FreshService API.
+Creates a PowerShell API around the [FreshService API](https://api.freshservice.com/).
 
 ## Usage
 
@@ -11,7 +11,7 @@ Automated the IT onboarding & offboarding of all associates and all the user pro
 - Created, updated, and disabled Active Directory & Entra accounts
 - Sanitized & standardized input data from HR to align with ISO standards (i.e. country & state/province name, etc.) and created tickets for HR to fix data that was too incorrect to be sanitized
 
-The aforementioned tickets included tasks for each part of the process so we’d have a “paper” trail for internal audit, for this automation. It also created and assigned tasks to humans for special handling for exceptional cases (i.e. offboarding of an Admin/high-profile user)
+The aforementioned tickets included tasks for each part of the process so we'd have a “paper” trail for internal audit, for this automation. It also created and assigned tasks to humans for special handling for exceptional cases (i.e. offboarding of an Admin/high-profile user)
 
 ## Branch Differences
 
